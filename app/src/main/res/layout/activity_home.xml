@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.pervy_sage.travvy.HomeActivity">
+
+    <FrameLayout
+        android:id="@+id/currLocationFragConatiner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="70sp">
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70sp"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:background="@color/colorCyan"
+        android:padding="10sp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="30sp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_search_white"
+                android:layout_height="30sp" />
+
+            <TextView
+                android:layout_gravity="center"
+                android:text="Explore"
+                android:textColor="@color/colorWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="30sp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_location_marker"
+                android:layout_height="30sp" />
+
+            <TextView
+                android:layout_gravity="center"
+                android:text="Destinations"
+                android:textColor="@color/colorWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="30sp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_favorite_border_white"
+                android:layout_height="30sp" />
+
+            <TextView
+                android:layout_gravity="center"
+                android:text="Saved"
+                android:textColor="@color/colorWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="30sp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_account_circle_white"
+                android:layout_height="30sp" />
+
+            <TextView
+                android:layout_gravity="center"
+                android:text="Account"
+                android:textColor="@color/colorWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+
+
+</FrameLayout>
