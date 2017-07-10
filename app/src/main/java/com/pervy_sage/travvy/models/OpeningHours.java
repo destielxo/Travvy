@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by pervy_sage on 7/7/17.
  */
 
-class OpeningHours {
+public class OpeningHours {
 
     boolean open_now;
     ArrayList<String>weekday_text;

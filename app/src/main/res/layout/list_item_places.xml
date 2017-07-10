@@ -15,14 +15,21 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="150sp"
+            android:layout_height="wrap_content"
             android:id="@+id/ivPlaceImage"/>
         <TextView
             android:id="@+id/tvPlaceName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-thin"
             android:text="Place Name"
             android:textSize="25sp"/>
+        <TextView
+            android:id="@+id/tvType"
+            android:text="Type"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

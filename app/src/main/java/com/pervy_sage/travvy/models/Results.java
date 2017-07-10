@@ -12,7 +12,13 @@ public class Results {
     String icon;
     String name;
     ArrayList<Photo> photos;
-    String placi_id;
+    String place_id;
+    double rating;
+
+    public double getRating() {
+        return rating;
+    }
+
     ArrayList<String>types;
     OpeningHours opening_hours;
 
@@ -27,7 +33,7 @@ public class Results {
         this.icon = icon;
         this.name = name;
         this.photos = photos;
-        this.placi_id = placi_id;
+        this.place_id = placi_id;
         this.types = types;
         this.opening_hours = opening_hours;
     }
@@ -49,7 +55,7 @@ public class Results {
     }
 
     public void setPlaci_id(String placi_id) {
-        this.placi_id = placi_id;
+        this.place_id = placi_id;
     }
 
     public void setTypes(ArrayList<String> types) {
@@ -78,7 +84,7 @@ public class Results {
     }
 
     public String getPlaci_id() {
-        return placi_id;
+        return place_id;
     }
 
     public ArrayList<String> getTypes() {

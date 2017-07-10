@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.pervy_sage.travvy.ViewPlaceActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="80sp">
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="vertical">
+          <android.support.v7.widget.RecyclerView
+              android:id="@+id/rvPlaceImageView"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+          </android.support.v7.widget.RecyclerView>
+          <TextView
+              android:id="@+id/tvPlaceName"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:padding="10sp"
+              android:text="PlaceName"
+              android:textSize="20sp"/>
+          <TextView
+              android:id="@+id/tvPlaceTypes"
+              android:text="PlaceTypes"
+              android:textSize="12sp"
+              android:padding="10sp"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" />
+          <LinearLayout
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+              <LinearLayout
+                  android:layout_weight="2"
+                  android:layout_width="0dp"
+                  android:orientation="vertical"
+                  android:layout_height="wrap_content">
+                  <TextView
+                      android:text="Address"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:textSize="18sp"
+                      android:textStyle="bold"
+                      android:padding="10sp"/>
+                  <TextView
+                      android:id="@+id/tvPlaceAddress"
+                      android:text="Address"
+                      android:textSize="15sp"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:padding="10sp"/>
+              </LinearLayout>
+              <TextView
+                  android:id="@+id/tvOpenOrClose"
+                  android:layout_weight="1"
+                  android:layout_width="0dp"
+                  android:layout_height="match_parent"
+                  android:textAlignment="center"
+                  android:text="Open Or Close"
+                  android:gravity="center"
+                  android:textSize="20sp"/>
+          </LinearLayout>
+          <LinearLayout
+              android:id="@+id/llReviewLayout"
+              android:layout_width="match_parent"
+              android:orientation="vertical"
+              android:layout_height="wrap_content">
+              <TextView
+                  android:text="Reviews"
+                  android:padding="5sp"
+                  android:textSize="18sp"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content" />
+              <LinearLayout
+                  android:orientation="horizontal"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content">
+                  <ImageView
+                      android:id="@+id/ivReviewProfilePic"
+                      android:layout_marginLeft="20sp"
+                      android:layout_width="60sp"
+                      android:layout_height="60sp" />
+                  <LinearLayout
+                      android:orientation="vertical"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent">
+                      <TextView
+                          android:id="@+id/tvReviewPersonName"
+                          android:text="Person's Name"
+                          android:textSize="18sp"
+                          android:padding="5sp"
+                          android:layout_marginLeft="30sp"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content" />
+                      <TextView
+                          android:id="@+id/tvReviewTime"
+                          android:text="Time"
+                          android:textSize="14sp"
+                          android:padding="2sp"
+                          android:layout_marginLeft="30sp"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content" />
+                  </LinearLayout>
+              </LinearLayout>
+              <TextView
+                  android:id="@+id/tvReviewBody"
+                  android:text="Body"
+                  android:textSize="18sp"
+                  android:padding="15sp"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content" />
+              <TextView
+                  android:id="@+id/tvReviewViewAll"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:textSize="20sp"
+                  android:padding="8sp"
+                  android:text="View All reviews"/>
+          </LinearLayout>
+          <TextView
+              android:text="Website"
+              android:textSize="18sp"
+              android:padding="10sp"
+              android:textStyle="bold"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" />
+          <TextView
+              android:id="@+id/tvPlaceUrl"
+              android:textSize="15sp"
+              android:text="Website Url"
+              android:padding="10sp"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" />
+
+      </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="80sp"
+        android:background="@drawable/margin_line">
+        <TextView
+            android:id="@+id/tvContactNo"
+            android:padding="5sp"
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20sp"
+            android:textSize="21sp"
+            android:text="98-XXX-XXXXX"/>
+        <Button
+            android:id="@+id/btnCallNumber"
+            android:layout_gravity="center"
+            android:layout_marginLeft="70sp"
+            android:text="Call Now"
+            android:fontFamily="monospace"
+            android:textStyle="bold"
+            android:layout_marginRight="30sp"
+            android:background="@drawable/my_custom_button"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:textColor="@color/colorWhite"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</FrameLayout>

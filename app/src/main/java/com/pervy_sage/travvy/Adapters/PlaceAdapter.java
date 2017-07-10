@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.pervy_sage.travvy.R;
+import com.pervy_sage.travvy.interfaces.OnViewClickListener;
 import com.pervy_sage.travvy.models.Results;
 import com.squareup.picasso.Picasso;
 
@@ -23,15 +24,21 @@ import java.util.ArrayList;
 public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHolder> {
     Context mContext;
     ArrayList<Results> placesList;
-    public static final String TAG="debug";
+    public static final String TAG="Adapter";
     public static final String
-            basePhotoUrl="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&key=";
-    public static final String API_KEY="AIzaSyAKss8SNS-zZXLZYTTtk6e9-HhzPiBDP-c";
+            basePhotoUrl="https://maps.googleapis.com/maps/api/place/photo?maxwidth=6000&key=";
+    public static final String API_KEY="AIzaSyAyEkOpW4ZdBzMgtoz_5SDOa1oUK4DCeMA";
+    private OnViewClickListener viewClickListener;
+    public void setViewClickListener(OnViewClickListener ovl){
+        this.viewClickListener=ovl;
+    }
 
-
-    public PlaceAdapter(Context mContext, ArrayList<Results> placesList) {
+    public PlaceAdapter(Context mContext,
+                        ArrayList<Results> placesList,
+                        OnViewClickListener viewClickListener) {
         this.mContext = mContext;
         this.placesList = placesList;
+        this.viewClickListener=viewClickListener;
     }
 
     public void updatePlaceList(ArrayList<Results> placesList){
@@ -51,38 +58,56 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
     @Override
     public void onBindViewHolder(PlaceViewHolder holder, int position) {
         if(placesList.size()!=0) {
-            Results thisPlace = placesList.get(position);
+            final Results thisPlace = placesList.get(position);
+            String photoUri=basePhotoUrl + API_KEY;
+            int width=0,height=0;
             if(thisPlace.getPhotos()!=null) {
                 String photoreference = thisPlace.getPhotos().get(0).getPhoto_reference();
-                Log.d(TAG, "onBindViewHolder: " + thisPlace.getPhotos().get(0).getHeight());
-                Log.d(TAG, "onBindViewHolder: " + photoreference);
-                String photoUri = basePhotoUrl + API_KEY + "&photoreference=" + photoreference;
-                Picasso.with(mContext).load(photoUri).
-                        fit().
-                        placeholder(R.drawable.loading).
-                        error(R.drawable.error_image).
-                        into(holder.ivPlaceImage);
+                photoUri += "&photoreference=" + photoreference;
             }
+            Picasso.with(mContext).setLoggingEnabled(true);
+                    Picasso.with(mContext).load(photoUri).
+                    resize(600,600).
+                    placeholder(R.drawable.loading).
+                    error(R.drawable.error_image).
+                    into(holder.ivPlaceImage);
+            StringBuilder sb = new StringBuilder();
+            for(int i=0;i<thisPlace.getTypes().size();i++){
+                String type = thisPlace.getTypes().get(i);
+                if(!type.equals("point_of_interest")&&!type.equals("establishment")){
+                    sb.append(type+", ");
+                }
+            }
+            Log.d(TAG, "Place id: "+thisPlace.getPlaci_id());
 
+            holder.tvType.setText(sb.toString());
             holder.tvPlaceName.setText(thisPlace.getName());
+            holder.rootView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewClickListener.onViewClick(thisPlace.getPlaci_id());
+                }
+            });
         }
 
     }
 
     @Override
     public int getItemCount() {
-        return placesList.size()/3;
+        return placesList.size();
     }
 
     public class PlaceViewHolder extends RecyclerView.ViewHolder {
         ImageView ivPlaceImage;
         TextView tvPlaceName;
+        TextView tvType;
         View rootView;
 
         public PlaceViewHolder(View itemView) {
             super(itemView);
             tvPlaceName=(TextView)itemView.findViewById(R.id.tvPlaceName);
             ivPlaceImage=(ImageView)itemView.findViewById(R.id.ivPlaceImage);
+            tvType=(TextView)itemView.findViewById(R.id.tvType);
             rootView=itemView;
 
         }

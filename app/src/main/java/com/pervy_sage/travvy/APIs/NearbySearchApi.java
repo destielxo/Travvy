@@ -11,9 +11,9 @@ import retrofit2.http.Query;
  */
 
 public interface NearbySearchApi {
-    @GET("/maps/api/place/nearbysearch/json?key=AIzaSyAKss8SNS-zZXLZYTTtk6e9-HhzPiBDP-c")
+    @GET("/maps/api/place/nearbysearch/json?key=AIzaSyAyEkOpW4ZdBzMgtoz_5SDOa1oUK4DCeMA")
     Call<NearbySearchList> getNearBySearchResltsbytype(
-            @Query("type") String type,
+            @Query("keyword") String type,
             @Query("location") String location,
             @Query("radius") int radius
     );

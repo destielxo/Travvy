@@ -6,16 +6,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.pervy_sage.travvy.HomeActivity">
+    <FrameLayout
+        android:id="@+id/placeTypesFragContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </FrameLayout>
 
     <FrameLayout
-        android:id="@+id/currLocationFragConatiner"
+        android:id="@+id/DesitinationsfragContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="70sp"></FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/catalogueFragConatiner"
+        android:layout_marginTop="90sp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="70sp">
 
     </FrameLayout>
-
     <LinearLayout
+        android:baselineAligned="true"
         android:layout_width="match_parent"
         android:layout_height="70sp"
         android:layout_gravity="bottom"
@@ -106,12 +118,7 @@
 
         </LinearLayout>
 
-
-
     </LinearLayout>
-
-
-
 
 
 </FrameLayout>
