@@ -5,6 +5,8 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.ConditionVariable;
 import android.support.v4.app.ActivityCompat;
@@ -61,6 +63,17 @@ public class MyLocationListener implements LocationListener {
             Log.d(TAG, "CheckRequirements: Network Success");
             if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
                 Log.d(TAG, "CheckRequirements: GPS Success");
+                ConnectivityManager connectivityManager = (ConnectivityManager)context.
+                        getSystemService(Context.CONNECTIVITY_SERVICE);
+                if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE)
+                        .getState() == NetworkInfo.State.CONNECTED ||
+                        connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI)
+                                .getState() == NetworkInfo.State.CONNECTED) {
+                    //we are connected to a network
+                    return LocationManager.NETWORK_PROVIDER;
+                }
+                else
+                    return Connection_Failed;
             }
             return LocationManager.NETWORK_PROVIDER;
         } else {

@@ -11,14 +11,15 @@ import retrofit2.http.Query;
  */
 
 public interface NearbySearchApi {
-    @GET("/maps/api/place/nearbysearch/json?key=AIzaSyAyEkOpW4ZdBzMgtoz_5SDOa1oUK4DCeMA")
+    @GET("/maps/api/place/nearbysearch/json?key=AIzaSyCAaX8xXI2RzBIzU9XNOVgwNWyJWgUHNGg")
     Call<NearbySearchList> getNearBySearchResltsbytype(
             @Query("keyword") String type,
             @Query("location") String location,
             @Query("radius") int radius
     );
-    @GET("/maps/api/place/nearbysearch/json?key=AIzaSyAKss8SNS-zZXLZYTTtk6e9-HhzPiBDP-c")
+    @GET("/maps/api/place/nearbysearch/json?key=AIzaSyCAaX8xXI2RzBIzU9XNOVgwNWyJWgUHNGg")
     Call<NearbySearchList> getNearBySearchReslts(
+            @Query("type") String type,
             @Query("location") String location,
             @Query("radius") int radius
     );

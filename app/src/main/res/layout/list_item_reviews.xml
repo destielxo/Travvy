@@ -1,6 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="7sp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="7sp"
+    app:cardElevation="5sp">
 
-</LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llReviewLayout"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/ivReviewProfilePic"
+                android:layout_marginLeft="20sp"
+                android:layout_width="90sp"
+                android:layout_height="90sp" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/tvReviewPersonName"
+                    android:text="Person's Name"
+                    android:textSize="18sp"
+                    android:padding="5sp"
+                    android:layout_marginLeft="30sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tvReviewTime"
+                    android:text="Time"
+                    android:textSize="14sp"
+                    android:padding="2sp"
+                    android:layout_marginLeft="30sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tvReviewRating"
+                    android:text="rating"
+                    android:textSize="18sp"
+                    android:layout_marginLeft="30sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tvReviewBody"
+            android:text="Body"
+            android:textSize="18sp"
+            android:padding="15sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

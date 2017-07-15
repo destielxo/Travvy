@@ -2,8 +2,10 @@ package com.pervy_sage.travvy.fragments;
 
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +25,7 @@ public class PlaceTypeBarFragment extends Fragment  implements View.OnClickListe
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_LOCATION = "location";
+    public static final String TAG="placetypebar";
 
     // TODO: Rename and change types of parameters
     private String locationCoordinates;
@@ -30,7 +33,9 @@ public class PlaceTypeBarFragment extends Fragment  implements View.OnClickListe
     private LinearLayout llBar, llCafe, llRestaurant,
             llSpa, llHotel, llHospital, llMall, llMovies;
 
+
     public PlaceTypeBarFragment() {
+        Log.d(TAG, "PlaceTypeBarFragment: ");
         // Required empty public constructor
     }
 
@@ -40,6 +45,7 @@ public class PlaceTypeBarFragment extends Fragment  implements View.OnClickListe
         PlaceTypeBarFragment fragment = new PlaceTypeBarFragment();
         Bundle args = new Bundle();
         args.putString(ARG_LOCATION, locationCoordinates);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -56,6 +62,7 @@ public class PlaceTypeBarFragment extends Fragment  implements View.OnClickListe
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        Log.d(TAG, "onCreateView: ");
         View itemVIew = inflater.inflate(R.layout.fragment_place_type_bar, container, false);
 
         llBar = (LinearLayout) itemVIew.findViewById(R.id.llBar);
@@ -83,7 +90,8 @@ public class PlaceTypeBarFragment extends Fragment  implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        FragmentManager fragmentManager = getFragmentManager();
+        Log.d(TAG, "onClick: ");
+        final FragmentManager fragmentManager = getFragmentManager();
         switch (v.getId()) {
             case R.id.llBar:
                 createfragment(PlaceTypes.bar);
@@ -110,10 +118,15 @@ public class PlaceTypeBarFragment extends Fragment  implements View.OnClickListe
                 createfragment(PlaceTypes.movies);
                 break;
         }
-        fragmentManager.beginTransaction().
-                replace(R.id.catalogueFragConatiner,categoryFragment).
-                commitNow();
-
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                fragmentManager.beginTransaction().
+                        replace(R.id.catalogueFragConatiner,categoryFragment).
+                        commit();
+            }
+        });
+        t.start();
     }
 
     private void createfragment(String placType) {

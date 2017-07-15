@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.pervy_sage.travvy.APIs.NearbySearchApi;
 import com.pervy_sage.travvy.Adapters.PlaceAdapter;
@@ -43,6 +44,7 @@ public class CatalogueFragment extends Fragment{
 
     private RecyclerView rvPlacesView;
     private PlaceAdapter placeAdapter;
+    private ProgressBar progressBar;
 
 
     private static OnCatalogueCreated onCatalogueCreated;
@@ -79,6 +81,8 @@ public class CatalogueFragment extends Fragment{
         View itemView= inflater.inflate(R.layout.fragment_catalogue, container, false);
         rvPlacesView=(RecyclerView)itemView.findViewById(R.id.rvPlacesView);
         rvPlacesView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        progressBar= (ProgressBar)itemView.findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
         placeAdapter=new PlaceAdapter(
                 getContext(),
                 new ArrayList<Results>(),
@@ -89,7 +93,8 @@ public class CatalogueFragment extends Fragment{
                         i.putExtra("placeId",s);
                         startActivity(i);
                     }
-                });
+                },
+        "vertical");
         rvPlacesView.setAdapter(placeAdapter);
         onCatalogueCreated.onCatalogueCreated();
         return itemView;
@@ -124,6 +129,7 @@ public class CatalogueFragment extends Fragment{
                 Log.d(TAG, "restaurant onResponse: "+response.body().getResults().size());
                 if(response.body().getResults().size()!=0) {
                     placeCatalogue.add(response.body().getResults().get(0));
+                    if(response.body().getResults().size()!=1)
                     placeCatalogue.add(response.body().getResults().get(1));
                 }
                 nearByBar(nearbySearchApi,
@@ -134,6 +140,9 @@ public class CatalogueFragment extends Fragment{
             @Override
             public void onFailure(Call<NearbySearchList> call, Throwable t) {
                 Log.d(TAG, "Prepare catalogue onFailure: ");
+                nearByBar(nearbySearchApi,
+                        locationCoordinates,
+                        placeCatalogue);
             }
         });
     }
@@ -162,6 +171,9 @@ public class CatalogueFragment extends Fragment{
             @Override
             public void onFailure(Call<NearbySearchList> call, Throwable t) {
                 Log.d(TAG, "Prepare catalogue onFailure: ");
+                nearByCafe(nearbySearchApi,
+                        locationCoordinates,
+                        placeCatalogue);
             }
         });
     }
@@ -217,6 +229,9 @@ public class CatalogueFragment extends Fragment{
             @Override
             public void onFailure(Call<NearbySearchList> call, Throwable t) {
                 Log.d(TAG, "Prepare catalogue onFailure: ");
+                nearByMall(nearbySearchApi,
+                        locationCoordinates,
+                        placeCatalogue);
             }
         });
     }
@@ -244,6 +259,9 @@ public class CatalogueFragment extends Fragment{
             @Override
             public void onFailure(Call<NearbySearchList> call, Throwable t) {
                 Log.d(TAG, "Prepare catalogue onFailure: ");
+                nearByMovies(nearbySearchApi,
+                        locationCoordinates,
+                        placeCatalogue);
             }
         });
     }
@@ -261,12 +279,13 @@ public class CatalogueFragment extends Fragment{
                     placeCatalogue.add(response.body().getResults().get(0));
                 }
                 Log.d(TAG, "Catalogue size onResponse: "+placeCatalogue.size());
-                placeAdapter.updatePlaceList(placeCatalogue);
+                placeAdapter.updatePlaceList(placeCatalogue,progressBar);
             }
 
             @Override
             public void onFailure(Call<NearbySearchList> call, Throwable t) {
                 Log.d(TAG, "Prepare catalogue onFailure: ");
+                //To implement snack bar here
             }
         });
     }

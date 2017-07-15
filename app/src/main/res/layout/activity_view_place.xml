@@ -85,8 +85,8 @@
                   <ImageView
                       android:id="@+id/ivReviewProfilePic"
                       android:layout_marginLeft="20sp"
-                      android:layout_width="60sp"
-                      android:layout_height="60sp" />
+                      android:layout_width="90sp"
+                      android:layout_height="90sp" />
                   <LinearLayout
                       android:orientation="vertical"
                       android:layout_width="match_parent"
@@ -104,6 +104,13 @@
                           android:text="Time"
                           android:textSize="14sp"
                           android:padding="2sp"
+                          android:layout_marginLeft="30sp"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content" />
+                      <TextView
+                          android:id="@+id/tvReviewRating"
+                          android:text="rating"
+                          android:textSize="18sp"
                           android:layout_marginLeft="30sp"
                           android:layout_width="match_parent"
                           android:layout_height="wrap_content" />
@@ -157,7 +164,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20sp"
-            android:textSize="21sp"
+            android:textSize="15sp"
             android:text="98-XXX-XXXXX"/>
         <Button
             android:id="@+id/btnCallNumber"

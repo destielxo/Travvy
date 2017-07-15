@@ -1,5 +1,6 @@
 package com.pervy_sage.travvy;
 
+import com.pervy_sage.travvy.APIs.AutoCompleteAPI;
 import com.pervy_sage.travvy.APIs.NearbySearchApi;
 import com.pervy_sage.travvy.APIs.PlaceDetailApi;
 
@@ -15,9 +16,14 @@ public class RetroFitPlaces {
     private Retrofit retrofitInstance;
     private NearbySearchApi nearbySearchApi = null;
     private PlaceDetailApi placeDetailApi = null;
+    private AutoCompleteAPI autoCompleteAPI= null;
 
     public PlaceDetailApi getPlaceDetailApi() {
         return placeDetailApi;
+    }
+
+    public AutoCompleteAPI getAutoCompleteAPI() {
+        return autoCompleteAPI;
     }
 
     private RetroFitPlaces(){
@@ -27,6 +33,8 @@ public class RetroFitPlaces {
                 .build();
         nearbySearchApi=retrofitInstance.create(NearbySearchApi.class);
         placeDetailApi=retrofitInstance.create(PlaceDetailApi.class);
+        autoCompleteAPI=retrofitInstance.create(AutoCompleteAPI.class);
+
     }
 
     public NearbySearchApi getNearbySearchApi() {

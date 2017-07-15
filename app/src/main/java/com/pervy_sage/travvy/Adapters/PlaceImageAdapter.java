@@ -24,7 +24,7 @@ public class PlaceImageAdapter extends RecyclerView.Adapter
 
     public static final String
             basePhotoUrl="https://maps.googleapis.com/maps/api/place/photo?maxwidth=6000&key=";
-    public static final String API_KEY="AIzaSyAyEkOpW4ZdBzMgtoz_5SDOa1oUK4DCeMA";
+    public static final String API_KEY="AIzaSyCAaX8xXI2RzBIzU9XNOVgwNWyJWgUHNGg";
 
     public PlaceImageAdapter(Context context, ArrayList<Photo> photos) {
         this.context = context;
@@ -52,19 +52,21 @@ public class PlaceImageAdapter extends RecyclerView.Adapter
                 sb.append(basePhotoUrl).
                         append(API_KEY).
                         append(thisPhoto.getPhoto_reference());
-
                 Picasso.with(context)
                         .load(sb.toString())
-                        .resize(600,600)
                         .placeholder(R.drawable.loading)
                         .error(R.drawable.error_image)
                         .into(holder.ivPlaceImage);
+
             }
     }
 
     @Override
     public int getItemCount() {
-        return photos.size();
+        if(photos!=null) {
+            return photos.size();
+        }
+        return 0;
     }
 
     public class PlaceImageHolder extends RecyclerView.ViewHolder{

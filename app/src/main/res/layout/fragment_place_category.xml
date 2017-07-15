@@ -5,6 +5,11 @@
     tools:context="com.pervy_sage.travvy.fragments.PlaceCategoryFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvPlaceCategory"
         android:layout_width="match_parent"

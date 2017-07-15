@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/CDlayout"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,6 +15,12 @@
 
     <FrameLayout
         android:id="@+id/DesitinationsfragContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="70sp"></FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/SearchfragContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="70sp"></FrameLayout>
@@ -35,6 +42,51 @@
         android:background="@color/colorCyan"
         android:padding="10sp">
         <LinearLayout
+            android:id="@+id/llNearby"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="30sp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_home_white"
+                android:layout_height="30sp" />
+
+            <TextView
+                android:layout_gravity="center"
+                android:text="Nearby"
+                android:textColor="@color/colorWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llDestination"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="30sp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_card_travel_white"
+                android:layout_height="30sp" />
+
+            <TextView
+                android:layout_gravity="center"
+                android:text="Destinations"
+                android:textColor="@color/colorWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llExplore"
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_width="wrap_content"
@@ -48,77 +100,15 @@
 
             <TextView
                 android:layout_gravity="center"
-                android:text="Explore"
+                android:text="Search"
                 android:textColor="@color/colorWhite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="30sp"
-                android:layout_gravity="center"
-                android:background="@drawable/ic_location_marker"
-                android:layout_height="30sp" />
-
-            <TextView
-                android:layout_gravity="center"
-                android:text="Destinations"
-                android:textColor="@color/colorWhite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="30sp"
-                android:layout_gravity="center"
-                android:background="@drawable/ic_favorite_border_white"
-                android:layout_height="30sp" />
-
-            <TextView
-                android:layout_gravity="center"
-                android:text="Saved"
-                android:textColor="@color/colorWhite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="30sp"
-                android:layout_gravity="center"
-                android:background="@drawable/ic_account_circle_white"
-                android:layout_height="30sp" />
-
-            <TextView
-                android:layout_gravity="center"
-                android:text="Account"
-                android:textColor="@color/colorWhite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
 
     </LinearLayout>
 
 
-</FrameLayout>
+</android.support.design.widget.CoordinatorLayout>

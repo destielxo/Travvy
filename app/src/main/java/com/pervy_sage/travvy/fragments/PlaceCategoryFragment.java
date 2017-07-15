@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.pervy_sage.travvy.APIs.NearbySearchApi;
 import com.pervy_sage.travvy.Adapters.PlaceAdapter;
@@ -43,6 +44,7 @@ public class PlaceCategoryFragment extends Fragment {
     private String placeType;
     private RecyclerView rvPlaceCategory;
     private PlaceAdapter placeAdapter;
+    private ProgressBar progressBar;
 
     public PlaceCategoryFragment() {
         // Required empty public constructor
@@ -85,6 +87,8 @@ public class PlaceCategoryFragment extends Fragment {
         View itemView= inflater.inflate(R.layout.fragment_place_category, container, false);
         rvPlaceCategory=(RecyclerView)itemView.findViewById(R.id.rvPlaceCategory);
         rvPlaceCategory.setLayoutManager(new LinearLayoutManager(getContext()));
+        progressBar=(ProgressBar)itemView.findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
         placeAdapter=new PlaceAdapter(getContext(),
                 new ArrayList<Results>(),
                 new OnViewClickListener() {
@@ -94,7 +98,8 @@ public class PlaceCategoryFragment extends Fragment {
                 i.putExtra("placeId",string);
                 startActivity(i);
             }
-        });
+        },
+        "vertical");
         rvPlaceCategory.setAdapter(placeAdapter);
         onCatalogueCreated.onCatalogueCreated();
         return itemView;
@@ -111,12 +116,13 @@ public class PlaceCategoryFragment extends Fragment {
                     @Override
                     public void onResponse(Call<NearbySearchList> call, Response<NearbySearchList> response) {
                         Log.d(TAG, "onResponse: "+response.body().getResults());
-                        placeAdapter.updatePlaceList(response.body().getResults());
+                        placeAdapter.updatePlaceList(response.body().getResults(),progressBar);
                     }
 
                     @Override
                     public void onFailure(Call<NearbySearchList> call, Throwable t) {
-
+                        Log.d(TAG, "onFailure: ");
+                        // to implement snack bar here
                     }
                 });
     }

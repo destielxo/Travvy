@@ -1,0 +1,76 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.pervy_sage.travvy.fragments.DestinationFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tvSK"
+            android:background="@drawable/southkorea"
+            android:layout_width="match_parent"
+            android:text="South Korea"
+            android:textSize="30sp"
+            android:textColor="@color/colorWhite"
+            android:gravity="center"
+            android:layout_height="150sp"
+            android:layout_marginBottom="15sp"/>
+        <TextView
+            android:id="@+id/tvJPN"
+            android:background="@drawable/japan"
+            android:layout_width="match_parent"
+            android:layout_height="150sp"
+            android:layout_marginBottom="15sp"/>
+        <TextView
+            android:id="@+id/tvFRA"
+            android:background="@drawable/france"
+            android:layout_width="match_parent"
+            android:layout_height="150sp"
+            android:layout_marginBottom="15sp"/>
+        <TextView
+            android:id="@+id/tvMKN"
+            android:background="@drawable/mykonos"
+            android:layout_width="match_parent"
+            android:layout_height="150sp"
+            android:layout_marginBottom="15sp"/>
+        <TextView
+            android:id="@+id/tvMAL"
+            android:background="@drawable/malayasia"
+            android:layout_width="match_parent"
+            android:text="Malayasia"
+            android:textSize="40sp"
+            android:textColor="@color/colorWhite"
+            android:gravity="center"
+            android:layout_height="150sp"
+            android:layout_marginBottom="15sp"/>
+        <TextView
+            android:id="@+id/tvMLD"
+            android:background="@drawable/maldives"
+            android:layout_width="match_parent"
+            android:text="Maldives"
+            android:textSize="40sp"
+            android:textColor="@color/colorWhite"
+            android:gravity="center"
+            android:layout_height="150sp"
+            android:layout_marginBottom="15sp"/>
+        <TextView
+            android:id="@+id/tvSWL"
+            android:background="@drawable/switzerland"
+            android:layout_width="match_parent"
+            android:text="Switzerland"
+            android:textSize="40sp"
+            android:textColor="@color/colorWhite"
+            android:gravity="center"
+            android:layout_height="150sp"
+            android:layout_marginBottom="15sp"/>
+
+
+    </LinearLayout>
+
+
+</ScrollView>

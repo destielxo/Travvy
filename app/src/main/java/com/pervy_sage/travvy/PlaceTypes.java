@@ -13,5 +13,6 @@ public class PlaceTypes {
     public static final String movies="movies";
     public static final String hotels="hotels";
     public static final String hospitals="hospitals";
+    public static final String POT="point_of_interest";
 
 }
