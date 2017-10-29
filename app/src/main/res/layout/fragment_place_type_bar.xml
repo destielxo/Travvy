@@ -26,7 +26,7 @@
                     android:padding="10sp"
                     android:background="@drawable/round_button"
                     android:layout_height="wrap_content">
-                    <ImageButton
+                    <ImageView
                         android:layout_width="25sp"
                         android:layout_height="25sp"
                         android:background="@drawable/round_button"
@@ -62,7 +62,7 @@
                     android:padding="10sp"
                     android:background="@drawable/round_button"
                     android:layout_height="wrap_content">
-                    <ImageButton
+                    <ImageView
                         android:layout_width="25sp"
                         android:layout_height="25sp"
                         android:background="@drawable/round_button"
@@ -129,7 +129,7 @@
                     android:padding="10sp"
                     android:background="@drawable/round_button"
                     android:layout_height="wrap_content">
-                    <ImageButton
+                    <ImageView
                         android:layout_width="25sp"
                         android:layout_height="25sp"
                         android:background="@drawable/round_button"
@@ -163,7 +163,7 @@
                     android:padding="10sp"
                     android:background="@drawable/round_button"
                     android:layout_height="wrap_content">
-                    <ImageButton
+                    <ImageView
                         android:layout_width="25sp"
                         android:layout_height="25sp"
                         android:background="@drawable/round_button"
@@ -196,7 +196,7 @@
                     android:padding="10sp"
                     android:background="@drawable/round_button"
                     android:layout_height="wrap_content">
-                    <ImageButton
+                    <ImageView
                         android:layout_width="25sp"
                         android:layout_height="25sp"
                         android:background="@drawable/round_button"
@@ -230,7 +230,7 @@
                     android:padding="10sp"
                     android:background="@drawable/round_button"
                     android:layout_height="wrap_content">
-                    <ImageButton
+                    <ImageView
                         android:layout_width="25sp"
                         android:layout_height="25sp"
                         android:background="@drawable/round_button"
@@ -263,7 +263,7 @@
                     android:padding="10sp"
                     android:background="@drawable/round_button"
                     android:layout_height="wrap_content">
-                    <ImageButton
+                    <ImageView
                         android:layout_width="25sp"
                         android:layout_height="25sp"
                         android:background="@drawable/round_button"

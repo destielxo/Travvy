@@ -32,7 +32,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceViewHol
     private String orientation="vertical";
     public static final String
             basePhotoUrl="https://maps.googleapis.com/maps/api/place/photo?maxwidth=6000&key=";
-    public static final String API_KEY="AIzaSyCAaX8xXI2RzBIzU9XNOVgwNWyJWgUHNGg";
+    public static final String API_KEY="AIzaSyAeQJnPACivs2Y2OkO0EQZoFz-BgHixsIo";
     private OnViewClickListener viewClickListener;
     public void setViewClickListener(OnViewClickListener ovl){
         this.viewClickListener=ovl;

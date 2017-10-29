@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -157,9 +158,16 @@ public class ViewPlaceActivity extends AppCompatActivity {
             tvPlaceUrl.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(Intent.ACTION_VIEW,
-                            Uri.parse(tvPlaceUrl.getText().toString()));
+//                    Intent i = new Intent(Intent.ACTION_VIEW,
+//                            Uri.parse(tvPlaceUrl.getText().toString()));
+//                    startActivity(i);
+
+                    Intent i = new Intent(ViewPlaceActivity.this, WebViewActivity.class);
+                    i.putExtra("URL",Uri.parse(tvPlaceUrl.getText().toString()).toString());
+                    i.putExtra("ActivityTitle",tvPlaceName.getText().toString());
                     startActivity(i);
+
+
                 }
             });
         }

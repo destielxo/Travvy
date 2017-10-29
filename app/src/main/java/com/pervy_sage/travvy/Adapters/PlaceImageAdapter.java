@@ -2,6 +2,7 @@ package com.pervy_sage.travvy.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +22,11 @@ public class PlaceImageAdapter extends RecyclerView.Adapter
         <PlaceImageAdapter.PlaceImageHolder> {
     private Context context;
     private ArrayList<Photo> photos;
+    public static final String TAG="ViewImage";
 
     public static final String
-            basePhotoUrl="https://maps.googleapis.com/maps/api/place/photo?maxwidth=6000&key=";
-    public static final String API_KEY="AIzaSyCAaX8xXI2RzBIzU9XNOVgwNWyJWgUHNGg";
+            basePhotoUrl="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&key=";
+    public static final String API_KEY="AIzaSyCMFUMXldDohn6d3WbtHgvPpGhU3aVqFFE";
 
     public PlaceImageAdapter(Context context, ArrayList<Photo> photos) {
         this.context = context;
@@ -46,17 +48,22 @@ public class PlaceImageAdapter extends RecyclerView.Adapter
 
     @Override
     public void onBindViewHolder(PlaceImageAdapter.PlaceImageHolder holder, int position) {
+        Log.d(TAG, "onBindViewHolder: ");
             if(photos.size()!=0){
                 Photo thisPhoto = photos.get(position);
                 StringBuilder sb = new StringBuilder();
+                Log.d(TAG, "onBindViewHolder: "+thisPhoto.getWidth());
                 sb.append(basePhotoUrl).
                         append(API_KEY).
+                        append("&photoreference=").
                         append(thisPhoto.getPhoto_reference());
-                Picasso.with(context)
-                        .load(sb.toString())
-                        .placeholder(R.drawable.loading)
-                        .error(R.drawable.error_image)
-                        .into(holder.ivPlaceImage);
+                Picasso picasso =Picasso.with(context);
+                        picasso.setLoggingEnabled(true);
+                        picasso.load(sb.toString())
+                                .placeholder(R.drawable.loading)
+                                .error(R.drawable.error_image)
+                                .resize(800,600)
+                                .into(holder.ivPlaceImage);
 
             }
     }

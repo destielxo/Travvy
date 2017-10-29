@@ -133,13 +133,7 @@ public class PlaceTypeBarFragment extends Fragment  implements View.OnClickListe
         categoryFragment =
                 PlaceCategoryFragment.newInstance(
                         locationCoordinates,
-                        placType,
-                        new OnCatalogueCreated() {
-                            @Override
-                            public void onCatalogueCreated() {
-                                categoryFragment.prepareCategoryCatalogue();
-                            }
-                        }
+                        placType
                 );
     }
 }

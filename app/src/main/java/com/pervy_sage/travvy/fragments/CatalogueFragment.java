@@ -37,6 +37,7 @@ import retrofit2.Response;
 public class CatalogueFragment extends Fragment{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    public static final String ARG_LOCATION="ARG_LOCATION";
 
     public static final String TAG="catalogue";
 
@@ -45,13 +46,9 @@ public class CatalogueFragment extends Fragment{
     private RecyclerView rvPlacesView;
     private PlaceAdapter placeAdapter;
     private ProgressBar progressBar;
+    private String location;
 
 
-    private static OnCatalogueCreated onCatalogueCreated;
-
-    public static void setOnCatalogueCreated(OnCatalogueCreated ocl){
-        onCatalogueCreated=ocl;
-    }
 
 
     public CatalogueFragment() {
@@ -60,10 +57,12 @@ public class CatalogueFragment extends Fragment{
 
 
     // TODO: Rename and change types and number of parameters
-    public static CatalogueFragment newInstance(OnCatalogueCreated onCatalogueCreated) {
+    public static CatalogueFragment newInstance(String locationCoordinates) {
         Log.d(TAG, "newInstance: ");
         CatalogueFragment fragment = new CatalogueFragment();
-        setOnCatalogueCreated(onCatalogueCreated);
+        Bundle args = new Bundle();
+        args.putString(ARG_LOCATION,locationCoordinates);
+        fragment.setArguments(args);
         return fragment;
     }
 
@@ -71,6 +70,10 @@ public class CatalogueFragment extends Fragment{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate: ");
+        if(getArguments()!=null){
+            location=getArguments().getString(ARG_LOCATION);
+            Log.d(TAG, "onCreate: location coordinates"+location);
+        }
     }
 
     @Override
@@ -96,7 +99,7 @@ public class CatalogueFragment extends Fragment{
                 },
         "vertical");
         rvPlacesView.setAdapter(placeAdapter);
-        onCatalogueCreated.onCatalogueCreated();
+        prepareCatalogue(location);
         return itemView;
     }
 
@@ -107,7 +110,8 @@ public class CatalogueFragment extends Fragment{
         placeAdapter.updatePlaceList(results);
     }
 
-    public void prepareCatalogue(String locationCoordinates){
+    private void prepareCatalogue(String locationCoordinates){
+        Log.d(TAG, "prepareCatalogue: ");
         NearbySearchApi nearbySearchApi=
                 RetroFitPlaces.getRetrofitAPIs().getNearbySearchApi();
         final ArrayList<Results> placeCatalogue = new ArrayList<>();
@@ -139,7 +143,7 @@ public class CatalogueFragment extends Fragment{
 
             @Override
             public void onFailure(Call<NearbySearchList> call, Throwable t) {
-                Log.d(TAG, "Prepare catalogue onFailure: ");
+                Log.d(TAG, "Prepare catalogue onFailure: "+t);
                 nearByBar(nearbySearchApi,
                         locationCoordinates,
                         placeCatalogue);
@@ -170,7 +174,7 @@ public class CatalogueFragment extends Fragment{
 
             @Override
             public void onFailure(Call<NearbySearchList> call, Throwable t) {
-                Log.d(TAG, "Prepare catalogue onFailure: ");
+                Log.d(TAG, "Prepare catalogue onFailure: "+t);
                 nearByCafe(nearbySearchApi,
                         locationCoordinates,
                         placeCatalogue);
@@ -200,7 +204,7 @@ public class CatalogueFragment extends Fragment{
 
             @Override
             public void onFailure(Call<NearbySearchList> call, Throwable t) {
-                Log.d(TAG, "Prepare catalogue onFailure: ");
+                Log.d(TAG, "Prepare catalogue onFailure: "+t);
                 nearBySpa(nearbySearchApi,
                         locationCoordinates,
                         placeCatalogue);
@@ -228,7 +232,7 @@ public class CatalogueFragment extends Fragment{
 
             @Override
             public void onFailure(Call<NearbySearchList> call, Throwable t) {
-                Log.d(TAG, "Prepare catalogue onFailure: ");
+                Log.d(TAG, "Prepare catalogue onFailure: "+t);
                 nearByMall(nearbySearchApi,
                         locationCoordinates,
                         placeCatalogue);
@@ -258,7 +262,7 @@ public class CatalogueFragment extends Fragment{
 
             @Override
             public void onFailure(Call<NearbySearchList> call, Throwable t) {
-                Log.d(TAG, "Prepare catalogue onFailure: ");
+                Log.d(TAG, "Prepare catalogue onFailure: "+t);
                 nearByMovies(nearbySearchApi,
                         locationCoordinates,
                         placeCatalogue);
@@ -284,8 +288,9 @@ public class CatalogueFragment extends Fragment{
 
             @Override
             public void onFailure(Call<NearbySearchList> call, Throwable t) {
-                Log.d(TAG, "Prepare catalogue onFailure: ");
+                Log.d(TAG, "Prepare catalogue onFailure: "+t);
                 //To implement snack bar here
+                Log.d(TAG, "onFailure: List preparation failed");
             }
         });
     }

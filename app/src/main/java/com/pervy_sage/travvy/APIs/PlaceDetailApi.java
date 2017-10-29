@@ -11,7 +11,7 @@ import retrofit2.http.Query;
  */
 
 public interface PlaceDetailApi {
-    @GET("/maps/api/place/details/json?key=AIzaSyCAaX8xXI2RzBIzU9XNOVgwNWyJWgUHNGg")
+    @GET("/maps/api/place/details/json?key=AIzaSyAeQJnPACivs2Y2OkO0EQZoFz-BgHixsIo")
     Call<PlaceDetails>getPlaceDetails(
       @Query("placeid") String placeId
     );

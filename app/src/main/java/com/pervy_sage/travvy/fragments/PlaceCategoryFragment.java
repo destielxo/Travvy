@@ -50,23 +50,13 @@ public class PlaceCategoryFragment extends Fragment {
         // Required empty public constructor
     }
 
-
-    private static OnCatalogueCreated onCatalogueCreated;
-
-    public static void setOnCatalogueCreated(OnCatalogueCreated ocl){
-        onCatalogueCreated=ocl;
-    }
-
-
     // TODO: Rename and change types and number of parameters
     public static PlaceCategoryFragment newInstance(String locationCoordinates,
-                                                    String placeType,
-                                                    OnCatalogueCreated onCatalogueCreated) {
+                                                    String placeType) {
         PlaceCategoryFragment fragment = new PlaceCategoryFragment();
         Bundle args = new Bundle();
         args.putString(ARG_LOCATION, locationCoordinates);
         args.putString(ARG_PLACETYPE,placeType);
-        setOnCatalogueCreated(onCatalogueCreated);
         fragment.setArguments(args);
         return fragment;
     }
@@ -101,11 +91,11 @@ public class PlaceCategoryFragment extends Fragment {
         },
         "vertical");
         rvPlaceCategory.setAdapter(placeAdapter);
-        onCatalogueCreated.onCatalogueCreated();
+        prepareCategoryCatalogue();
         return itemView;
     }
 
-    public void prepareCategoryCatalogue(){
+    private void prepareCategoryCatalogue(){
         NearbySearchApi nearbySearchApi =
                 RetroFitPlaces.getRetrofitAPIs().getNearbySearchApi();
         nearbySearchApi.getNearBySearchResltsbytype(
